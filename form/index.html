@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: #eee;
+        }
+        .form{
+            margin: 5% auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0px 0px 12px #444;
+            max-width: 300px;
+        }
+        label {
+            font-weight: bold;
+        }
+        h2 {
+            font-weight: 100;
+            border-bottom: 1px solid #000;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        input {
+            border: none;
+            outline: none;
+            padding: 15px 10px;
+            background: #333;
+            color: #fff;
+            width: 94%;
+        }
+        input::placeholder{
+            color: #ccc;
+        }
+        #btn {
+            margin: auto;
+            display: block;
+            padding: 15px;
+            background: #555;
+            border: none;
+            outline: none;
+            width: 50%;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 30px;
+        }
+        #btn:hover{
+            background: #555;
+            color: #fff;
+        }
+        small{
+            color: red;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="form">
+        <form action="land.html" onsubmit="return fn1()">
+            <h2>Registration form</h2>
+            <label>Username:</label><br>
+            <input type="text" id="uName" placeholder="Username...">
+            <small id="iName">Enter Username</small>
+            <br><br>
+            <label>Password:</label><br>
+            <input type="password" id="Pass" placeholder="Password..">
+            <small id="iPass1">Input your password</small>
+            <br><br><br>
+            <button type="submit" id="btn">Submit</button>
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        function fn1() {
+            var uName = document.getElementById('uName').value;
+            var pass = document.getElementById('Pass').value;
+            var inp = document.getElementById('iName');
+            var pin = document.getElementById('iPass1');
+            if(uName=='' && pass==''){
+                inp.style.display = 'block';
+                pin.style.display = 'block';
+                return false;
+            }
+            else if( pass.length<8 && uName.length<5){
+                pin.style.display = 'block';
+                pin.innerHTML = 'pasword must be up to <i>8 characters</i>';
+                inp.style.display = 'block';
+                inp.innerHTML = 'Usrename must be up to <i>5 characters</i>';
+                return false;
+            }
+            else if( pass.length<8 && uName.length>5){
+                pin.style.display = 'block';
+                pin.innerHTML = 'pasword must be up to <i>8 characters</i>';
+                return false;
+            }
+            else if( pass.length>8 && uName.length<5){
+                pin.style.display = 'block';
+                pin.innerHTML = 'pasword must be up to <i>8 characters</i>';pin.style.display = 'block';
+                pin.innerHTML = 'pasword must be up to <i>8 characters</i>';
+                return false;
+            }
+            else if(uName==''){
+                inp.style.display = 'block';
+                return false;
+            }
+            else if(pass==''){
+                pin.style.display = 'block';
+                return false;
+            }
+            else if( pass.length>1 && pass.length<8){
+                pin.style.display = 'block';
+                pin.innerHTML = 'pasword must be up to <i>8 characters</i>';
+                return false;
+            }
+            else if(uName.length<5){
+                inp.style.display = 'block';
+                inp.innerHTML = 'Usrename must be up to <i>5 characters</i>';
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
